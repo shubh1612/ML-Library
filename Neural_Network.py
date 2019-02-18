@@ -1,6 +1,7 @@
 import tensorflow as tf
 import numpy as np
 import pandas as pd
+import ActivationFunction as af
 
 class NeuralNetwork:
 	
@@ -51,10 +52,31 @@ class NeuralNetwork:
 		self.W = W
 		self.b = b
 
-	def ActivationValue(ActivationFunction, X):
-
-
-
+	def ActivationValue(ActivationFunction, X, parameters):
+		if(ActivationFunction == 'ReLu'):
+			return af.relu(X, parameters)
+		elif(ActivationFunction == 'Sigmoid'):
+			return af.sigmoid(X, parameters)
+		elif(ActivationFunction == 'Tanh'):
+			return af.tanh(X, parameters)
+		elif(ActivationFunction == 'Softmax'):
+			return af.softmax(X, parameters)
+		elif(ActivationFunction == 'LeakyRelu'):
+			return af.leakyrelu(X, parameters)
+		elif(ActivationFunction == 'Swish'):
+			return af.swish(X, parameters)
+		elif(ActivationFunction == 'BinaryStep'):
+			return af.binarystep(X, parameters)
+		elif(ActivationFunction == 'ParametricRelu'):
+			return af.parametricrelu(X, parameters)
+		elif(ActivationFunction == 'ExpLinearUnit'):
+			return af.explinearunit(X, parameters)
+		elif(ActivationFunction == 'ScaledExpLinearUnit'):
+			return af.scaledexplinearunit(X, parameters)
+		elif(ActivationFunction == 'SoftPlus'):
+			return af.softplus(X, parameters)
+		elif(ActivationFunction == 'Maxout'):
+			return af.maxout(X, parameters)
 
 		
 	def forward_propagation(self, X):
