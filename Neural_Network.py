@@ -75,8 +75,6 @@ class NeuralNetwork:
 			return af.scaledexplinearunit(X, parameters)
 		elif(ActivationFunction == 'SoftPlus'):
 			return af.softplus(X, parameters)
-		elif(ActivationFunction == 'Maxout'):
-			return af.maxout(X, parameters)
 
 		
 	def forward_propagation(self, X):
@@ -100,3 +98,5 @@ class NeuralNetwork:
 		a = ActivationValue(self.OutputActivation, z)
 		self.Z.append(z)
 		self.A.append(a)
+
+	def compute_cost(self, parameters):

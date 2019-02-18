@@ -31,12 +31,18 @@ class ActivationFunction:
 	def parametricrelu(x, parameters):
 		return np.where(x > 0, x, x*parameters)		
 
-	def explinearunit(x, parameters):
-		
+	def explinearunit(x, parameters = 1.67):
+		x[x <= 0] = parameters*(np.exp(x) - 1)
+		return x
 		
 	def scaledexplinearunit(x, parameters):
+		alpha = parameters[0]
+		lamda = parameters[1]
+		x = explinearunit(x, alpha)
+		return lamda*x 
 
 	def softplus(x, parameters):
-
-	def maxout(x, parameters):
-
+		if (x > parameters):
+    		return x
+  		else:
+    		return np.log(1.0 + np.exp(x))	
