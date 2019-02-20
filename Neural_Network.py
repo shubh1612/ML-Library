@@ -99,4 +99,11 @@ class NeuralNetwork:
 		self.Z.append(z)
 		self.A.append(a)
 
-	def compute_cost(self, parameters):
+	def compute_cost(self, A2, parameters):
+
+		m = (self.Y).shape[1]
+		logprobs = (self.Y)*np.log(A2) + (1-(self.Y))*np.log(1-A2)
+		cost = -(1/m)*np.sum(logprobs)
+		return cost
+
+	def backward_propagation(self, parameters, cache, X, Y)
